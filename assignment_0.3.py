@@ -29,12 +29,11 @@ package_noise = np.random.normal(mu, sigma, 1000)
 expected = friis_function()
 measurements = [expected + noise1 for noise1 in package_noise]
 
-
-normalized_residuals = [(measurement - expected)/sigma for measurement in measurements]
+normalized_residuals = [(measurement - expected)/1 for measurement in measurements]
 
 
 #make the histogram plot with the gaussian plotted over it in red
-count, bins, ignored = plt.hist(normalized_residuals, 30, normed=True)
+count, bins, ignored = plt.hist(normalized_residuals, 20, normed=True)
 plt.plot(bins, 1/(sigma * np.sqrt(2 * np.pi)) * np.exp( - (bins - mu)**2 / (2 * sigma**2) ),
         linewidth=2, color='r')
 plt.show()
